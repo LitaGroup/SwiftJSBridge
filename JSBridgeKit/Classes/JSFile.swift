@@ -32,9 +32,11 @@ var JSResponseCallbacks = {};
 
 setTimeout(function() {
 var callbacks = window.SwiftJSBridgeReadyCallbacks;
+if (Array.isArray(callbacks)) {
 delete window.SwiftJSBridgeReadyCallbacks;
 for (var i=0; i<callbacks.length; i++) {
 callbacks[i](SwiftJSBridge);
+}
 }
 }, 0);
 
